@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container p-3">
+      <div class="row pt-4">
+        <ul>
+            <div class="container p-3">
+                <div class="row pt-4">
+                    <li>
+                        <a asp-controller="Article" asp-action="ArticleList">
+                            <h3>
+                                @ViewBag.article<span><span>(</span>@ViewBag.articleCount<span>)</span></span>
+                            </h3>
+                        </a>
+                    </li>
+                </div>
+            </div>
+
+            <div class="container p-3">
+                <div class="row pt-4">
+                    <li>
+                        <a asp-controller="Category" asp-action="CategoryList">
+                            <h3>
+                                @ViewBag.category<span><span>(</span>@ViewBag.categoryCount<span>)</span></span>
+                            </h3>
+                        </a>
+                    </li>
+                </div>
+            </div>
+
+
+
+            <div class="container p-3">
+                <div class="row pt-4">
+                    <li>
+                        <a asp-action="" asp-route-id="">
+                            <h3>
+                                @ViewBag.comment<span><span>(</span>@ViewBag.commentCount<span>)</span></span>
+                            </h3>
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </ul>
+
+    </div>
+</div>

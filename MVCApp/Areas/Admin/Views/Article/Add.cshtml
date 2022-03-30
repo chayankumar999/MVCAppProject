@@ -1,0 +1,54 @@
+﻿@model ApiApp.Models.Article
+
+@{
+    ViewData["Title"] = "Add";
+    IList<string> categoryList = ViewBag.CategoryList;
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <textarea asp-for = "Title" rows = "2" cols="150" placeholder="Add a Title"></textarea>
+                <span asp-validation-for="Title"></span>
+            </div>
+                <div class="form-group">
+                <select asp-for = "Category" style="width=400px">
+                    @foreach(var item in categoryList)
+                    {
+                       if(@item=="Uncategorized")
+                       {
+                           <option selected>@item</option>
+                       }
+                       else
+                       {
+                           <option>@item</option>
+                       }
+                    }
+                </select>
+                <span asp-validation-for="Category" placeholder="Category" class="text-danger"></span>
+                </div>
+            <div class="form-group">
+                    <button type="button">Publish</button>
+            </div>
+            <div class="form-group">
+                <textarea asp-for = "ArtBody" rows = "15" cols="150" placeholder="Write here about Article Details"></textarea>
+                <span asp-validation-for="ArtBody" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="float-right" asp-action="ArticleList">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ApiApp.Models.Article>
+
+@{
+    ViewData["Title"] = "Article List";
+}
+
+<div>
+    
+</div>
+
+
+<div>
+    <div>
+        <h3>Article List</h3>
+    </div>
+    
+</div>
+
+
+<div>
+
+<ul>
+@foreach (var item in Model) 
+{
+    <li>
+        <h5>
+            <a class = "minimize" asp-action="ArticleDetails" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+        </h5>
+        <p>
+            @Html.DisplayFor(modelItem => item.Category) <span>&nbsp; &nbsp;</span> @Html.DisplayFor(modelItem => item.CreationTime)
+        </p>
+    </li>
+    
+}
+</ul>
+
+</div>

@@ -1,0 +1,56 @@
+﻿@model ApiApp.Models.Article
+
+@{
+    ViewData["Title"] = "Edit";
+    IList<string> categoryList = ViewBag.CategoryList;
+}
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form id = "EditForm" asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <textarea asp-for = "Title" rows = "2" cols="150" placeholder="Add a Title"></textarea>
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div class="form-group">
+                 <select asp-for = "Category">
+                    @foreach(var item in categoryList)
+                    {
+                       <option>@item</option>
+                    }
+                </select>
+                <span asp-validation-for="Category" placeholder="Category" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                    <input type = "hidden" asp-for = "Publish" id = "publishKey"/>
+                    @if(@Model.Publish==0)
+                    {
+                        <button type="button" class="switchBtn">Publish</button>
+                    }
+                    else
+                    {
+                        <button asp-for = "Publish" type="button" class="switchBtn">Unpublish</button>
+                    }
+            </div>
+            <div class="form-group">
+                <textarea asp-for = "ArtBody" rows = "15" cols="150" placeholder="Write here about Article Details"></textarea>
+                <span asp-validation-for="ArtBody" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="CreationTime" />
+            <div class="form-group">
+                <input type="submit" id = "submit" value="Save" name="Edit" class="btn btn-primary" />
+                <input type="submit" value="Delete" name="Delete" class="btn btn-secondary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="float-right" asp-action="ArticleList">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

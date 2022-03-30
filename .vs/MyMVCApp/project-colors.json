@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "37389d18-891e-4c67-ae7a-23a21438b50a": {
+      "ProjectGuid": "37389d18-891e-4c67-ae7a-23a21438b50a",
+      "DisplayName": "MVCApp",
+      "ColorIndex": 0
+    },
+    "380ab3a4-7f27-48e3-b059-955889f3e4f4": {
+      "ProjectGuid": "380ab3a4-7f27-48e3-b059-955889f3e4f4",
+      "DisplayName": "ApiApp",
+      "ColorIndex": 1
+    },
+    "26399c4c-671d-4ab3-831e-2329bc1cea75": {
+      "ProjectGuid": "26399c4c-671d-4ab3-831e-2329bc1cea75",
+      "DisplayName": "MVCApp",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 3
+}

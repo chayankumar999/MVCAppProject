@@ -1,0 +1,77 @@
+﻿@model ApiApp.Models.ViewModel
+@using ApiApp.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> signInManager
+
+@{
+    ViewData["Title"] = "Article Details";
+    var username = ViewBag.username;
+    var artid = ViewBag.artid;
+}
+
+<div>
+    <div>
+        <h3>
+            @Model.article.Title
+        </h3>
+
+    </div>
+    <div>
+        <h5>
+            @Model.article.Category <span>&nbsp; &nbsp;</span> @Model.article.CreationTime
+        </h5>
+    </div>
+
+    <hr />
+
+    <div>
+        <p>
+            @Model.article.ArtBody
+        </p>
+    </div>
+</div>
+
+<hr />
+<h5>Comments :</h5>
+
+@if(signInManager.IsSignedIn(User))
+{
+    
+<div>
+    @foreach(var C in Model.CommentList)
+    {
+        <p>
+            @C.Username <span>: &nbsp; &nbsp;</span> @C.Comments
+        </p>
+        <p>@C.CreationTime</p>
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="NewComment" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type = "hidden" asp-for="Id" />
+            <input type = "hidden" asp-for="ArtId" value=@artid />
+            <input type = "hidden" asp-for="UserName" value=@username>
+            <div class="form-group">
+                <textarea  asp-for = "Comments" rows = "2" cols="150" placeholder="Add a New Comment"></textarea>
+                <span asp-validation-for="Comments"></span>
+            </div>
+
+            <input type = "hidden" asp-for="CreationTime" />
+
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    </div>
+}
+else
+{
+    <p>You are not Logged In. To see or add comment you need to logged in first.</p>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

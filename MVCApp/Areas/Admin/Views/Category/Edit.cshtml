@@ -1,0 +1,42 @@
+﻿@model ApiApp.Models.Category
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                @if(@Model.Name == "Uncategorized")
+                {
+                    <textarea asp-for = "Name" rows = "2" cols="150" placeholder="Add a Category" readonly></textarea>
+                }
+                else
+                {
+                    <textarea asp-for = "Name" rows = "2" cols="150" placeholder="Add a Category"></textarea>
+                }
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <input type="hidden" class="form-control" />
+            <div class="form-group">
+                <input type="submit" value="Save" name="Edit" class="btn btn-primary" />
+                @if(@Model.Name != "Uncategorized")
+                {
+                    <input type="submit" value="Delete" name="Delete" class="btn btn-secondary" />
+                }
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class = "float-right" asp-action="CategoryList">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

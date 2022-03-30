@@ -1,0 +1,36 @@
+﻿@model ApiApp.Models.AdminUser
+
+@{
+	ViewData["Title"] = "User Profile";
+}
+
+
+
+<h3>User Details</h3>
+
+<div>
+	<div>
+		User ID		:	@Model.Id
+	</div>
+	<div>
+		First Name	:	@Model.FirstName
+	</div>
+
+	<div>
+		Last Name	:	@Model.LastName
+	</div>
+
+	<div>
+		User Name	:	@Model.UserName
+	</div>
+
+	<div>
+		Email		:	@Model.Email
+	</div>
+
+	<div>
+		Created On	:	@Model.CreationTime
+	</div>
+</div>
+
+

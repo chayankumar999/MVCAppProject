@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ApiApp.Models.Category>
+
+@{
+    ViewData["Title"] = "Category List";
+}
+
+<div>
+    <div>
+        <h3>Category List</h3>
+    </div>
+</div>
+
+<div>
+<ul>
+@foreach (var item in Model) 
+{
+    <li>
+          <h5 class = "minimize">
+              @Html.DisplayFor(modelItem => item.Name)
+          </h5>
+          <p>
+              @Html.DisplayFor(modelItem => item.CreationTime)
+         </p>
+    </li>
+}
+</ul>
+
+</div>

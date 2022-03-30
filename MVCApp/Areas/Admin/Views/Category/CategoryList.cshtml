@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ApiApp.Models.Category>
+
+@{
+    ViewData["Title"] = "Category List";
+}
+
+<div>
+    <div>
+        <h3>Category List</h3>
+        <a class="float-right" asp-controller="Category" asp-action="Add">
+            <i class="bi bi-plus-circle-fill"></i> &nbsp; Add New Category
+        </a>
+    </div>
+</div>
+
+<div>
+<ul>
+@foreach (var item in Model) 
+{
+    <li>
+          <h5>
+              <a class = "minimize" asp-action="Edit" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+          </h5>
+          <p>
+              @Html.DisplayFor(modelItem => item.CreationTime)
+         </p>
+    </li>
+}
+</ul>
+
+</div>
